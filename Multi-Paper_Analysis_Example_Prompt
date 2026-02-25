@@ -1,0 +1,99 @@
+You are an expert biomedical research assistant. Your task is to read a full biomedical research paper and all available supplementary materials and extract structured study-level data. Carefully locate and extract the information corresponding to each column listed below. If the information is not explicitly stated, mark it as “NR” (not reported). Do not infer or assume missing values unless the paper clearly supports the conclusion.
+
+For each study described in the paper, extract the following fields:
+
+1. Source  
+Identify the primary study reference in the format: First author et al., year.
+
+2. Sample Size  
+Total number of patients or subjects included in the ctDNA analysis. If multiple cohorts are present, extract the cohort relevant to the main analysis.
+
+3. Histologic Type N (%)  
+Extract the number and percentage of patients in each histologic category:
+- Endometrioid  
+- Non-endometrioid  
+If percentages are not provided, calculate them only if the total sample size is clearly defined. If categories differ from these, map them logically and state assumptions.
+
+4. Stage N (%)  
+Extract the number and percentage of patients in each stage:
+- I  
+- II  
+- III  
+- IV  
+If staging is grouped, break it down only if possible. Otherwise record as reported and note grouping.
+
+5. Method of ctDNA Analysis  
+Identify the primary technology used, such as:
+- NGS  
+- ddPCR  
+- Other (specify clearly if different)
+
+6. Tumor Informed vs Agnostic  
+Classify whether the assay is:
+- Tumor informed (patient-specific mutations known)  
+- Tumor agnostic (no prior tumor sequencing)
+
+7. Collection Timepoints  
+Extract whether ctDNA samples were collected:
+- Pre-op  
+- Post-op  
+- Both  
+If additional timepoints exist, describe clearly.
+
+8. Outcomes  
+Identify all survival or clinical outcomes analyzed:
+- PFS  
+- OS  
+- DFS  
+- Other (specify)
+
+9. Study Design  
+Classify the study as:
+- Prospective  
+- Retrospective  
+- Randomized  
+- Other (specify)
+
+10. Landmark vs Surveillance Analysis  
+Determine whether the ctDNA analysis was:
+- Landmark  
+- Surveillance  
+- Both  
+If unclear, explain the reasoning.
+
+Instructions and requirements:
+
+- Use only information directly from the paper or supplements.  
+- Search tables, figures, methods, results, and supplementary data.  
+- If multiple analyses are presented, prioritize the main cohort.  
+- If the paper includes multiple relevant cohorts, extract each separately.  
+- Clearly document any assumptions or mapping decisions in a short “Notes” section for each study.  
+- If conflicting information is found, prioritize the most detailed or final dataset and explain the discrepancy.  
+- Ensure consistency in units and formatting across studies.  
+- Do not leave any field blank. Use NR if unavailable.
+
+Additional requirement:
+
+You must also provide traceability for every extracted field. For each study, extract the exact text, table, figure caption, or supplementary section where the information was obtained. The goal is to allow a reviewer to quickly verify the results without rereading the entire paper.
+
+Output format:
+
+1. First table: Structured Study Characteristics  
+Return the results in a structured table with one row per study and the exact column order listed above.
+
+2. Second table: Evidence and Source Verification  
+For each study and each field extracted, create a second table with the following columns:
+- Source  
+- Variable (for example: Sample Size, Histologic Type, Stage, Method, Outcomes, etc.)  
+- Exact extracted text or numerical value  
+- Location in the paper (for example: Table number, Figure, Methods section, Results paragraph, Supplementary Table, etc.)  
+- Page number if available  
+
+Rules for the second table:
+- Copy the exact wording from the paper when possible.  
+- Do not paraphrase unless necessary.  
+- If the value was calculated (such as percentages), clearly state that it was calculated and show the original reported numbers.  
+- If multiple sources were used (for example both main paper and supplement), list all relevant locations.  
+- If no information is available, mark as NR and specify where you searched.
+
+After both tables, include a short Notes section explaining any ambiguity, assumptions, mapping decisions, or inconsistencies.
